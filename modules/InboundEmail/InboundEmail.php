@@ -5325,10 +5325,12 @@ class InboundEmail extends SugarBean
 
                 $possibleFormats = [
                     \DateTime::RFC2822,
+		    \DateTime::RFC2822 . '+', // ignore trailing characters after a RFC2822 compliant date header
                     str_replace(['D, '], '', \DateTime::RFC2822), // day-of-week is optional
                     str_replace([':s'], '', \DateTime::RFC2822), // seconds are optional
                     str_replace(['D, ', ':s'], '', \DateTime::RFC2822), // day-of-week is optional, seconds are optional
                     \DateTime::RFC822,
+                    \DateTime::RFC822 . '+', // ignore trailing characters after a RFC822 compliant date heade
                     str_replace(['D, '], '', \DateTime::RFC822), // day is optional
                     str_replace([':s'], '', \DateTime::RFC822), // seconds are optional
                     str_replace(['D, ', ':s'], '', \DateTime::RFC822), // day is optional, seconds are optional
